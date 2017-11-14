@@ -8,24 +8,26 @@ docker pull php:7.0-apache
 // récupère l'image officiel mysql
 docker pull mysql
 
-// crée le container some-mysql avec le mdp "admin"
-docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=admin -d mysql
+// crée le container-mysql avec le mdp "admin"
+docker run --name container-mysql -e MYSQL_ROOT_PASSWORD=admin -d mysql
 
-// crée le container my-apache-php-app et le lie au container some-mysql, ouvre le port 80:80 et crée un dossier de partage
-docker run --name my-apache-php-app --link some-mysql:mysql -d -p 80:80 -v c:/www/php:/var/www/html php:7.0-apache
+// crée le container-php et le lie à container-mysql, ouvre le port 80:80 et crée un dossier de partage
+docker run --name container-php --link container-mysql:mysql -d -p 80:80 -v c:/www/php:/var/www/html php:7.0-apache
+
+// crée le container container-wordpress
 
 =====================================================================
 	ACCÈS ET INSTALLATION DU DRIVER PDO	     
 =====================================================================
 
 // connexion en ligne de commande au serveur mysql
-docker exec -ti some-mysql bash
+docker exec -ti container-mysql bash
 
 // connexion au bash mysql
 mysql -u root -p
 
 // récupere l'IP du container mysql pour s'y connecter avec PDO
-docker inspect some-mysql | grep IPAddress
+docker inspect container-mysql | grep IPAddress
 
 // installe PDO sur le container php:7.0-apache
 docker-php-ext-install pdo pdo_mysql
