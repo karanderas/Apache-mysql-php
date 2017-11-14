@@ -30,5 +30,5 @@ mysql -u root -p
 // récupere l'IP du container mysql pour s'y connecter avec PDO
 docker inspect container-mysql | grep IPAddress
 
-// installe PDO sur le container php:7.0-apache
+// installe PDO sur le container-php
 docker-php-ext-install pdo pdo_mysql
