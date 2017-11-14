@@ -14,7 +14,8 @@ docker run --name container-mysql -e MYSQL_ROOT_PASSWORD=admin -d mysql
 // crée le container-php et le lie à container-mysql, ouvre le port 80:80 et crée un dossier de partage
 docker run --name container-php --link container-mysql:mysql -d -p 80:80 -v c:/www/php:/var/www/html php:7.0-apache
 
-// crée le container container-wordpress
+// crée le container container-wordpress et le lie à container-mysql, ouvre le port 8080:80
+docker run --name container-wordpress --link container-mysql:mysql -p 8080:80 -d wordpress
 
 =====================================================================
 	ACCÈS ET INSTALLATION DU DRIVER PDO	     
