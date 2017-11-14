@@ -11,7 +11,7 @@ docker pull mysql
 // crée le container some-mysql avec le mdp "admin"
 docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=admin -d mysql
 
-// crée le container my-apache-php-app et le lie au container some-mysql, ouvre le port 80:80 et cré un dossier de partage
+// crée le container my-apache-php-app et le lie au container some-mysql, ouvre le port 80:80 et crée un dossier de partage
 docker run --name my-apache-php-app --link some-mysql:mysql -d -p 80:80 -v c:/www/php:/var/www/html php:7.0-apache
 
 =====================================================================
