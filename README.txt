@@ -32,3 +32,16 @@ docker inspect container-mysql | grep IPAddress
 
 // installe PDO sur le container-php
 docker-php-ext-install pdo pdo_mysql
+
+=====================================================================
+	INSTALLATION DE LA LIBRAIRIE ZIPARCHIVE	     
+=====================================================================
+
+// connexion en ligne de commande au serveur php:apache
+docker exec -ti container-php bash
+
+// puis installation de la librairie
+apt-get update && apt-get install -y zlib1g-dev && rm -rf /var/lib/apt/lists/* && docker-php-ext-install zip
+
+// redémarrer le serveur
+docker restart container-php
