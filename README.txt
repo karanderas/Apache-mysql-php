@@ -45,3 +45,10 @@ apt-get update && apt-get install -y zlib1g-dev && rm -rf /var/lib/apt/lists/* &
 
 // redémarrer le serveur
 docker restart container-php
+
+=====================================================================
+	ACTIVATION .HTACCESS SUR LE SERVEUR	     
+=====================================================================
+
+// afin de ne pas avoir le message "Internal error 500" se connecter sur le serveur puis:
+a2enmod rewrite
